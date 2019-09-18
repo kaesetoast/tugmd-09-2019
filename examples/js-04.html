@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+  :root {
+    --right: 0px;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  body {
+    padding: 10px;
+    background: white;
+  }
+  .box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: calc(0px + var(--right));
+    bottom: 0;
+    border: 2px solid black;
+    background-color: #0A3148;
+  }
+  .wrapper {
+    position: relative;
+    height: calc(100% - 20px);
+  }
+  .handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    background: hsl(202, 51%, 54%);
+    cursor: col-resize;
+  }
+  </style>
+  <div class="wrapper">
+    <div class="box">
+      <div class="handle"></div>
+    </div>
+  </div>
+  <script>
+  const handle = document.querySelector('.handle');
+  let dragging = false;
+  let start = 0;
+  handle.addEventListener('mousedown', (e) => {
+    dragging = true;
+    start = e.clientX;
+    setTimeout(() => {
+      window.addEventListener('mousemove', mousemove);
+    }, 100);
+  });
+  window.addEventListener('mouseup', (e) => {
+    dragging = false;
+    window.removeEventListener('mousemove', mousemove);
+  });
+  function mousemove(e) {
+    if (dragging) {
+      document.body.style.setProperty('--right', `${start - e.clientX}px`);
+    }
+  }
+  </script>
+</body>
+</html>

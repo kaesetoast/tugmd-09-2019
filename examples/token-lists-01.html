@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: white;
+    padding: 10px;
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .square {
+    width: 120px;
+    height: 120px;
+    background-color: darkorange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(45deg);
+    transition: transform .2s ease-out;
+  }
+  .square:hover {
+    transform: rotate(45deg) scale(2);
+  }
+  .inner {
+    transform: rotate(-45deg);
+  }
+  </style>
+  <div class="square">
+    <div class="inner">
+      Hover me
+    </div>
+  </div>
+</body>
+</html>

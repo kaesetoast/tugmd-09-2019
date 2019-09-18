@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+    .hero {
+      padding: 5px 25px;
+  --color: white;
+  --bg-color: indigo;
+
+  background-color: var(--bg-color);
+  color: var(--color);
+  position: relative;
+  overflow: hidden;
+
+  }
+  .hero::after {
+    content: 'Hover Content';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color);
+    color: var(--bg-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 30px;
+    border: 3px solid var(--bg-color);
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform .4s ease-out, opacity .4s ease-out;
+  }
+  .hero:hover::after {
+    transform: none;
+    opacity: 1;
+  }
+  </style>
+  <div class="hero">
+    <h2>Hallo</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel blanditiis excepturi ducimus rerum aperiam minima, minus, quidem illo consequuntur id nulla. Vitae sequi blanditiis optio earum eaque, maxime ratione minus!</p>
+  </div>
+</body>
+</html>

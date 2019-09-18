@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+  :root {
+    --header-height: 60px;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: sans-serif;
+    padding: 15px;
+    --bg-color: lightsalmon;
+    background-color: var(--bg-color);
+  }
+  button {
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid black;
+    background: white;
+  }
+  </style>
+  <div class="header">
+  </div>
+  <h1>Welcome</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit provident veniam accusantium earum, labore autem hic consequuntur. Culpa obcaecati consequuntur quidem doloribus fugiat voluptas, quas dolore eveniet, nam quia ipsa!</p>
+  <button id="button">Change to pink</button>
+  <script>
+  const button = document.querySelector('#button');
+  button.addEventListener('click', () => {
+    document.body.style.setProperty('--bg-color', 'pink');
+  });
+  </script>
+</body>
+</html>

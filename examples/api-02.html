@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .btn {
+  --bg-color: indigo;
+  --color: white;
+  --border-radius: 10px;
+
+  background: var(--bg-color);
+  color: var(--color);
+  border-radius:
+    var(--border-radius);
+    padding: 20px;
+    font-size: 28px;
+    font-weight: 700;
+}
+  </style>
+  <button class="btn" style="--bg-color: red">
+  Click mich
+</button>
+</body>
+</html>

@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/pno.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/tomorrow-night-bright.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <span class="highlight">CSS Custom Properties are Variables.</span
+          ><br />
+          Just cooler. 😎
+          <aside class="notes">
+            Darum soll es heute gehen
+          </aside>
+        </section>
+        <section data-transition="zoom">
+          <div style="font-size: 4em">
+            👋
+          </div>
+        </section>
+        <section data-transition="convex">
+          <div style="display: grid; grid-template-columns: 1fr 3fr">
+            <div style="margin-top: -1em">
+              <img
+                src="https://secure.gravatar.com/avatar/5bdfcb0dc46af8e85af45dca5d20d324?s=600"
+                style="border-radius: 50%"
+                alt=""
+              />
+              <p>👋</p>
+              <p
+                style="display: flex; font-size: .7em; justify-content: center; padding-right: 1em"
+              >
+                <svg
+                  style="width: 1.5em; color: hsl(202, 93%, 58%)"
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Logo_FIXED"
+                  data-name="Logo — FIXED"
+                  viewBox="0 0 400 400"
+                >
+                  <defs>
+                    <style>
+                      .cls-1 {
+                        fill: none;
+                      }
+                      .cls-2 {
+                        fill: currentColor;
+                      }
+                    </style>
+                  </defs>
+                  <title>Twitter_Logo_Blue</title>
+                  <rect class="cls-1" width="100" height="100" />
+                  <path
+                    class="cls-2"
+                    d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23"
+                  />
+                </svg>
+                @pnodev<br />
+              </p>
+              <p style="font-size: .7em">
+                pno.dev
+              </p>
+            </div>
+            <div>
+              <h2 class="highlight">Philipp Nowinski</h2>
+              <h4 class="fragment">WebDeveloper</h4>
+              <h4 class="fragment">Frontend Architect</h4>
+              <h4 class="fragment">Consultant</h4>
+              <h4 class="fragment">Entrepreneur</h4>
+              <h4 class="fragment highlight">...auuuuus Berlin</h4>
+            </div>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>Irgendwie seit neustem auch 'Entrepreneur'</li>
+              <li>Auf Website und Twitter hinweisen</li>
+            </ul>
+          </aside>
+        </section>
+        <section data-transition="convex">
+          <div
+            style="display: flex; justify-content: space-around; align-items: center"
+          >
+            <svg
+              class="fragment shadow-2xl"
+              style="width: 20%; height: auto;border: 3px solid #fff; border-radius: 50%"
+              width="231"
+              height="231"
+              viewBox="0 0 231 231"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="115.5" cy="115.5" r="115.5" fill="#093148" />
+              <g filter="url(#filter0_d)">
+                <path
+                  d="M58.7656 129.547C58.7031 130.016 58.0156 132.484 56.7031 136.953C55.4219 141.422 54.3438 144.969 53.4688 147.594C51.5 153.469 49.875 157.125 48.5938 158.562C47.5625 159.688 46.3125 160.25 44.8438 160.25C43.0625 160.25 41.7031 159.375 40.7656 157.625C40.4844 157.125 40.3438 156.562 40.3438 155.938C40.3438 155.344 40.8125 154.031 41.75 152C44.2188 146.844 47.5156 136.688 51.6406 121.531C53.2969 115.531 54.3906 111.453 54.9219 109.297L56.4219 103.438C57.3906 99.5625 57.9531 96.9375 58.1094 95.5625C58.2969 94.1562 58.2188 93.1719 57.875 92.6094C57.5312 92.0156 57.1406 91.5781 56.7031 91.2969C56.2656 90.9844 55.8594 90.7188 55.4844 90.5C55.1094 90.2812 54.9531 89.8906 55.0156 89.3281C55.0781 88.7344 55.3281 88.2031 55.7656 87.7344C56.2344 87.2344 56.8125 86.8125 57.5 86.4688C58.9062 85.8125 60.3125 85.4844 61.7188 85.4844C63.1562 85.4844 64.2812 85.6562 65.0938 86C65.9062 86.3438 66.5781 86.8125 67.1094 87.4062C68.2344 88.625 68.7344 89.8125 68.6094 90.9688C68.2969 93.375 67.9531 95.4375 67.5781 97.1562C73.0469 89.375 78.7188 85.4844 84.5938 85.4844C89.9375 85.4844 93.5156 88.25 95.3281 93.7812C95.9531 95.7188 96.2656 98.0781 96.2656 100.859C96.2656 103.641 95.8438 106.438 95 109.25C94.1562 112.031 93.0156 114.672 91.5781 117.172C90.1406 119.672 88.4688 121.984 86.5625 124.109C84.6562 126.203 82.6406 128.031 80.5156 129.594C76.0156 132.844 71.7656 134.469 67.7656 134.469C63.7656 134.469 60.7656 132.828 58.7656 129.547ZM65.9844 109.578C64.8594 111.766 63.9375 113.953 63.2188 116.141C62.5312 118.328 62.1875 120.328 62.1875 122.141C62.1875 123.953 62.5781 125.453 63.3594 126.641C64.1406 127.797 65.2969 128.375 66.8281 128.375C68.3594 128.375 69.875 127.969 71.375 127.156C72.9062 126.312 74.375 125.188 75.7812 123.781C77.2188 122.375 78.5469 120.734 79.7656 118.859C81.0156 116.953 82.0938 114.938 83 112.812C84.9688 108.188 85.9531 103.797 85.9531 99.6406C85.9531 97.3906 85.6562 95.6406 85.0625 94.3906C84.4688 93.1406 83.5469 92.5156 82.2969 92.5156C81.0781 92.5156 79.7969 93 78.4531 93.9688C77.1094 94.9062 75.7031 96.1719 74.2344 97.7656C72.7656 99.3281 71.3125 101.141 69.875 103.203C68.4375 105.234 67.1406 107.359 65.9844 109.578ZM130.327 94.3438C129.358 94.3438 127.983 95.2812 126.202 97.1562C124.421 99 122.874 100.688 121.561 102.219L117.577 107L109.889 116.797C108.077 120.234 106.655 123.094 105.624 125.375L103.092 130.812C102.436 132.156 101.858 133.109 101.358 133.672C100.889 134.203 100.233 134.469 99.3894 134.469C98.5769 134.469 97.78 134.312 96.9987 134C96.2487 133.719 95.5925 133.344 95.03 132.875C93.8425 131.875 93.2487 130.781 93.2487 129.594C93.2487 129.125 93.5925 128.203 94.28 126.828L96.0612 123.031C96.6237 121.906 97.28 120.469 98.03 118.719L100.655 112.297C104.342 103.078 106.186 97.125 106.186 94.4375C106.186 93 105.717 91.9375 104.78 91.25L103.842 90.5938C103.53 90.375 103.374 90 103.374 89.4688C103.374 88.9062 103.577 88.375 103.983 87.875C104.421 87.375 104.983 86.9375 105.671 86.5625C107.077 85.8438 108.483 85.4844 109.889 85.4844C111.327 85.4844 112.436 85.6406 113.217 85.9531C113.999 86.2656 114.655 86.6875 115.186 87.2188C116.342 88.3125 116.921 89.4531 116.921 90.6406C116.921 91.8281 116.764 93.0312 116.452 94.25C116.171 95.4375 115.796 96.6562 115.327 97.9062C114.889 99.125 114.421 100.328 113.921 101.516C113.421 102.703 112.967 103.734 112.561 104.609L111.624 106.625C111.374 107.125 111.311 107.281 111.436 107.094C114.905 102.281 117.186 99.1875 118.28 97.8125L121.561 93.875C123.967 91.0625 125.858 89.2031 127.233 88.2969C130.014 86.4219 132.202 85.4844 133.796 85.4844C135.389 85.4844 136.733 85.6875 137.827 86.0938C138.921 86.5 139.874 87.0781 140.686 87.8281C142.405 89.4219 143.264 91.4531 143.264 93.9219C143.264 96.3906 142.702 98.9688 141.577 101.656C140.452 104.344 139.467 106.531 138.624 108.219C137.811 109.875 137.03 111.562 136.28 113.281C133.936 118.5 132.764 122.297 132.764 124.672C132.764 125.734 133.608 126.266 135.296 126.266C136.608 126.266 137.796 125.984 138.858 125.422C139.952 124.859 140.655 124.578 140.967 124.578C141.624 124.578 141.952 124.906 141.952 125.562C141.952 128.344 140.53 130.672 137.686 132.547C135.78 133.828 134.03 134.469 132.436 134.469C130.842 134.469 129.514 134.297 128.452 133.953C127.421 133.609 126.499 133.062 125.686 132.312C123.842 130.656 122.921 128.344 122.921 125.375C122.921 121.75 124.061 117.219 126.342 111.781C127.999 108.062 129.171 105.516 129.858 104.141L131.452 100.812C132.421 98.8125 132.905 97.2344 132.905 96.0781C132.905 94.9219 132.046 94.3438 130.327 94.3438ZM148.076 130.812C146.763 129.562 145.732 127.984 144.982 126.078C144.232 124.141 143.841 121.859 143.81 119.234C143.779 116.609 144.091 113.953 144.747 111.266C145.435 108.578 146.388 105.984 147.607 103.484C148.857 100.984 150.341 98.6406 152.06 96.4531C153.81 94.2656 155.732 92.3594 157.826 90.7344C162.388 87.2344 167.122 85.4844 172.029 85.4844C178.466 85.4844 182.826 88.3125 185.107 93.9688C186.732 98.0625 186.826 103.016 185.388 108.828C184.076 114.172 181.669 119.078 178.169 123.547C174.701 128.016 170.607 131.188 165.888 133.062C163.513 134 161.169 134.469 158.857 134.469C156.576 134.469 154.529 134.172 152.716 133.578C150.935 132.984 149.388 132.062 148.076 130.812ZM157.029 108.078C156.091 110.391 155.341 112.766 154.779 115.203C154.247 117.641 153.997 119.953 154.029 122.141C154.06 124.297 154.388 126 155.013 127.25C155.669 128.469 156.716 129.078 158.154 129.078C159.591 129.078 160.997 128.594 162.372 127.625C163.779 126.625 165.138 125.312 166.451 123.688C167.763 122.062 168.997 120.188 170.154 118.062C171.31 115.938 172.326 113.719 173.201 111.406C175.107 106.375 176.029 101.906 175.966 98C175.966 94.5625 175.263 92.375 173.857 91.4375C173.294 91.0625 172.497 90.875 171.466 90.875C170.466 90.875 169.31 91.3438 167.997 92.2812C166.685 93.1875 165.372 94.4219 164.06 95.9844C162.747 97.5469 161.482 99.375 160.263 101.469C159.044 103.562 157.966 105.766 157.029 108.078Z"
+                  fill="#FFE50A"
+                />
+              </g>
+              <defs>
+                <filter
+                  id="filter0_d"
+                  x="36.3438"
+                  y="85.4844"
+                  width="154.056"
+                  height="82.7656"
+                  filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB"
+                >
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix
+                    in="SourceAlpha"
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  />
+                  <feOffset dy="4" />
+                  <feGaussianBlur stdDeviation="2" />
+                  <feColorMatrix
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                  />
+                  <feBlend
+                    mode="normal"
+                    in2="BackgroundImageFix"
+                    result="effect1_dropShadow"
+                  />
+                  <feBlend
+                    mode="normal"
+                    in="SourceGraphic"
+                    in2="effect1_dropShadow"
+                    result="shape"
+                  />
+                </filter>
+              </defs>
+            </svg>
+
+            <svg
+              class="fragment"
+              style="width: 40%; height: auto"
+              width="260"
+              height="64"
+              viewBox="0 0 260 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="32" cy="32" r="32" fill="white" />
+              <path
+                d="M24.1291 21.0803C25.1465 19.7552 26.3125 18.5667 27.5982 17.5436C33.8104 12.6004 42.4924 11.6833 50.2577 15.1514C50.4274 15.2279 50.55 15.382 50.5864 15.5645C52.2209 23.9093 49.3776 32.1638 43.1659 37.1067C41.9173 38.1002 40.5442 38.948 39.079 39.6297C39.052 40.7446 38.925 41.8906 38.6998 43.0419C38.664 43.226 38.5403 43.3801 38.369 43.4557L23.0755 50.2014C22.8874 50.2846 22.6708 50.2601 22.5043 50.1388C22.3386 50.0168 22.2527 49.8155 22.2764 49.6118C22.3673 48.8277 22.8147 47.7285 23.3327 46.4549C24.0108 44.7868 24.8246 42.7854 24.7927 41.4662L24.4314 41.7537C24.1839 41.9507 23.8244 41.9101 23.6272 41.6623L18.7941 35.5886C18.5969 35.3407 18.6382 34.9814 18.8857 34.7844L19.1315 34.5889C17.8526 34.2614 15.7206 34.6053 13.9435 34.8908C12.5851 35.1097 11.4133 35.2994 10.6286 35.2118C10.4762 35.1952 10.3379 35.1167 10.2442 34.999C10.2129 34.9596 10.1872 34.9165 10.1667 34.8692C10.0852 34.6814 10.1111 34.4635 10.2335 34.2998L20.2411 20.9132C20.3524 20.764 20.5309 20.6775 20.7175 20.6841C21.8894 20.7227 23.0346 20.8556 24.1291 21.0803ZM31.9712 24.5338C31.2636 26.1982 31.5242 28.1099 32.6493 29.5238C33.7183 30.8672 35.3784 31.5464 37.0887 31.3403C37.9963 31.231 38.8516 30.8746 39.5609 30.3102C41.6837 28.621 42.0362 25.5201 40.3472 23.3975C38.6577 21.2743 35.5571 20.9218 33.4343 22.611C32.7951 23.1196 32.2895 23.7847 31.9712 24.5338Z"
+                fill="#0A3148"
+              />
+              <path
+                d="M17.0582 37.4767C18.0308 37.5715 19.3863 39.083 20.1969 40.1017C21.0076 41.1204 22.1765 42.7814 22.0502 43.7502C22.0841 43.8481 22.0933 43.953 22.0704 44.0573C22.0361 44.2234 21.9314 44.3654 21.7821 44.4454C13.8225 48.7204 11.8309 47.7587 11.3437 47.1465C9.88131 45.3087 14.3376 39.8452 16.3204 37.5817C16.432 37.4544 16.5943 37.3817 16.7633 37.3879C16.87 37.3902 16.9716 37.4215 17.0582 37.4767Z"
+                fill="#0A3148"
+              />
+              <path
+                d="M114.002 30.921C116.157 31.5217 117.818 32.617 118.984 34.207C120.185 35.797 120.786 37.7403 120.786 40.037C120.786 43.217 119.638 45.708 117.341 47.51C115.08 49.312 111.953 50.213 107.96 50.213H94.286C93.2613 50.213 92.4487 49.9303 91.848 49.365C91.2827 48.7997 91 48.0047 91 46.98V16.081C91 15.0563 91.2827 14.2613 91.848 13.696C92.4487 13.1307 93.2613 12.848 94.286 12.848H107.43C111.317 12.848 114.355 13.7137 116.546 15.445C118.772 17.141 119.885 19.526 119.885 22.6C119.885 24.5787 119.355 26.2923 118.295 27.741C117.27 29.1897 115.839 30.2497 114.002 30.921ZM97.678 28.589H106.317C111.016 28.589 113.366 26.84 113.366 23.342C113.366 21.5753 112.783 20.268 111.617 19.42C110.451 18.572 108.684 18.148 106.317 18.148H97.678V28.589ZM107.218 44.913C109.691 44.913 111.493 44.4713 112.624 43.588C113.755 42.7047 114.32 41.3267 114.32 39.454C114.32 37.5813 113.737 36.1857 112.571 35.267C111.44 34.3483 109.656 33.889 107.218 33.889H97.678V44.913H107.218Z"
+                fill="white"
+              />
+              <path
+                d="M141.065 23.766C141.983 23.6953 142.708 23.8897 143.238 24.349C143.768 24.8083 144.033 25.4973 144.033 26.416C144.033 27.37 143.803 28.0767 143.344 28.536C142.884 28.9953 142.054 29.2957 140.853 29.437L139.263 29.596C137.178 29.808 135.641 30.5147 134.652 31.716C133.698 32.9173 133.221 34.419 133.221 36.221V47.351C133.221 48.3757 132.903 49.1707 132.267 49.736C131.631 50.266 130.836 50.531 129.882 50.531C128.928 50.531 128.133 50.266 127.497 49.736C126.896 49.1707 126.596 48.3757 126.596 47.351V26.84C126.596 25.8507 126.896 25.091 127.497 24.561C128.133 24.031 128.91 23.766 129.829 23.766C130.747 23.766 131.489 24.031 132.055 24.561C132.62 25.0557 132.903 25.78 132.903 26.734V28.854C133.574 27.2993 134.563 26.098 135.871 25.25C137.213 24.402 138.697 23.925 140.323 23.819L141.065 23.766Z"
+                fill="white"
+              />
+              <path
+                d="M166.562 25.674C166.845 25.038 167.216 24.5787 167.675 24.296C168.17 23.978 168.7 23.819 169.265 23.819C170.078 23.819 170.802 24.1017 171.438 24.667C172.11 25.197 172.445 25.8683 172.445 26.681C172.445 27.0697 172.339 27.476 172.127 27.9L157.658 58.216C157.058 59.4173 156.121 60.018 154.849 60.018C154.037 60.018 153.312 59.753 152.676 59.223C152.076 58.7283 151.775 58.0923 151.775 57.315C151.775 56.9263 151.881 56.4847 152.093 55.99L155.697 48.411L145.839 27.9C145.663 27.5467 145.574 27.1403 145.574 26.681C145.574 25.8683 145.91 25.1793 146.581 24.614C147.288 24.0487 148.083 23.766 148.966 23.766C149.567 23.766 150.115 23.925 150.609 24.243C151.104 24.5257 151.493 24.985 151.775 25.621L159.195 41.998L166.562 25.674Z"
+                fill="white"
+              />
+              <path
+                d="M185.405 50.637C181.554 50.637 178.445 49.8773 176.077 48.358C174.947 47.6867 174.381 46.7327 174.381 45.496C174.381 44.7893 174.576 44.224 174.964 43.8C175.353 43.3407 175.83 43.111 176.395 43.111C176.996 43.111 177.826 43.3937 178.886 43.959C180.017 44.489 181.042 44.8953 181.96 45.178C182.914 45.4607 184.116 45.602 185.564 45.602C187.048 45.602 188.197 45.3547 189.009 44.86C189.857 44.3653 190.281 43.6763 190.281 42.793C190.281 42.1923 190.105 41.7153 189.751 41.362C189.433 41.0087 188.833 40.6907 187.949 40.408C187.101 40.09 185.794 39.7367 184.027 39.348C180.883 38.712 178.621 37.811 177.243 36.645C175.901 35.479 175.229 33.8713 175.229 31.822C175.229 30.2673 175.689 28.8717 176.607 27.635C177.526 26.363 178.78 25.3913 180.37 24.72C181.996 24.0133 183.833 23.66 185.882 23.66C187.366 23.66 188.797 23.8543 190.175 24.243C191.553 24.5963 192.79 25.1263 193.885 25.833C195.016 26.5397 195.581 27.476 195.581 28.642C195.581 29.3487 195.387 29.9493 194.998 30.444C194.61 30.9033 194.133 31.133 193.567 31.133C193.179 31.133 192.79 31.0623 192.401 30.921C192.048 30.7443 191.589 30.497 191.023 30.179C189.999 29.649 189.115 29.2603 188.373 29.013C187.631 28.7303 186.713 28.589 185.617 28.589C184.31 28.589 183.268 28.854 182.49 29.384C181.748 29.914 181.377 30.6383 181.377 31.557C181.377 32.4403 181.766 33.1117 182.543 33.571C183.321 34.0303 184.822 34.4897 187.048 34.949C189.416 35.4437 191.271 36.009 192.613 36.645C193.956 37.281 194.91 38.076 195.475 39.03C196.076 39.984 196.376 41.203 196.376 42.687C196.376 45.0897 195.369 47.0153 193.355 48.464C191.377 49.9127 188.727 50.637 185.405 50.637Z"
+                fill="white"
+              />
+              <path
+                d="M224.803 45.072C225.51 45.7433 225.863 46.503 225.863 47.351C225.863 48.1637 225.563 48.888 224.962 49.524C224.397 50.16 223.725 50.478 222.948 50.478C222.171 50.478 221.446 50.16 220.775 49.524L208.373 38.288V47.351C208.373 48.3757 208.055 49.153 207.419 49.683C206.783 50.213 205.988 50.478 205.034 50.478C204.08 50.478 203.285 50.213 202.649 49.683C202.048 49.153 201.748 48.3757 201.748 47.351V15.71C201.748 14.6853 202.048 13.908 202.649 13.378C203.285 12.848 204.08 12.583 205.034 12.583C205.988 12.583 206.783 12.848 207.419 13.378C208.055 13.908 208.373 14.6853 208.373 15.71V35.638L219.715 24.773C220.351 24.137 221.075 23.819 221.888 23.819C222.701 23.819 223.407 24.1193 224.008 24.72C224.609 25.3207 224.909 26.0273 224.909 26.84C224.909 27.6527 224.573 28.3947 223.902 29.066L215.581 36.804L224.803 45.072Z"
+                fill="white"
+              />
+              <path
+                d="M233.449 50.531C232.495 50.531 231.7 50.266 231.064 49.736C230.463 49.1707 230.163 48.3757 230.163 47.351V26.893C230.163 25.8683 230.463 25.091 231.064 24.561C231.7 24.031 232.495 23.766 233.449 23.766C234.403 23.766 235.198 24.031 235.834 24.561C236.47 25.091 236.788 25.8683 236.788 26.893V47.351C236.788 48.3757 236.47 49.1707 235.834 49.736C235.198 50.266 234.403 50.531 233.449 50.531ZM233.449 19.049C232.248 19.049 231.294 18.731 230.587 18.095C229.88 17.4237 229.527 16.558 229.527 15.498C229.527 14.438 229.88 13.59 230.587 12.954C231.294 12.318 232.248 12 233.449 12C234.615 12 235.551 12.318 236.258 12.954C237 13.59 237.371 14.438 237.371 15.498C237.371 16.558 237.018 17.4237 236.311 18.095C235.604 18.731 234.65 19.049 233.449 19.049Z"
+                fill="white"
+              />
+              <path
+                d="M257.082 45.602C258.849 45.708 259.732 46.503 259.732 47.987C259.732 48.835 259.379 49.4887 258.672 49.948C258.001 50.372 257.029 50.5487 255.757 50.478L254.326 50.372C248.39 49.948 245.422 46.768 245.422 40.832V29.278H242.772C241.818 29.278 241.076 29.066 240.546 28.642C240.051 28.218 239.804 27.5997 239.804 26.787C239.804 25.9743 240.051 25.356 240.546 24.932C241.076 24.508 241.818 24.296 242.772 24.296H245.422V19.42C245.422 18.466 245.722 17.7063 246.323 17.141C246.924 16.5757 247.736 16.293 248.761 16.293C249.75 16.293 250.545 16.5757 251.146 17.141C251.747 17.7063 252.047 18.466 252.047 19.42V24.296H256.552C257.506 24.296 258.23 24.508 258.725 24.932C259.255 25.356 259.52 25.9743 259.52 26.787C259.52 27.5997 259.255 28.218 258.725 28.642C258.23 29.066 257.506 29.278 256.552 29.278H252.047V41.309C252.047 43.9237 253.248 45.3193 255.651 45.496L257.082 45.602Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>4.5 Jahre Frontend-Lead bei sgalinski</li>
+              <li>seit Juli selbstständig mit pno</li>
+              <li>Startup Bryskit</li>
+              <li>Neuer Ansatz für Content Management</li>
+              <li>Marketingsites und Landingpages</li>
+              <li>Super schnell, offline-fähig</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>CSS Variables</h2>
+          <h3 class="fragment highlight">Custom Properties</h3>
+          <aside class="notes">
+            <ul>
+              <li>Fragen wer Variablen schon in Präprozessoren benutzt hat</li>
+              <li>Fragen wer CPs schon genutzt hat</li>
+              <li>Produktiv?</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom: .5em">Syntax</h2>
+          <div style="display: flex">
+            <div class="fragment" style="width: 50%;">
+              <div class="code-title">
+                Variablen in Präprozessoren (Sass)
+              </div>
+              <pre
+                style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+              ><code class="scss" style="height:100%" data-trim class="hljs">
+                    $color-primary: #093148;
+        
+                    a {
+                      color: $color-primary;
+                    }
+                  </code></pre>
+            </div>
+            <div class="fragment" style="width: 50%;">
+              <div class="code-title">
+                CSS Custom Properties
+              </div>
+              <pre
+                style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+              ><code class="css" style="height:100%" data-trim class="hljs">
+                :root {
+                  --color-primary: #093148;
+                }
+
+                a {
+                  color: var(--color-primary);
+                }
+              </code></pre>
+            </div>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>Variablen in Sass</li>
+              <li>Überall deklarierbar</li>
+              <li>Compile time</li>
+              <li>CPs innerhalb von{}</li>
+              <li>-- Syntax</li>
+              <li>Ja, hässlich</li>
+              <li>Notwendig um von anderen (künftigen) Properties unterscheidbar</li>
+              <li>Vendor-Prefixes</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2 class="highlight" style="margin-bottom: .5em">Unterschiede</h2>
+          <ul>
+            <li class="fragment">Custom Properties sind CSS-Properties</li>
+            <li class="fragment">
+              Verwendung:
+              <ul>
+                <li class="fragment">
+                  überall wo <code>Values</code> genutzt werden können
+                </li>
+                <li class="fragment">innerhalb von <code>{}</code></li>
+                <li class="fragment">
+                  innerhalb von <code>style</code>-Attributen
+                </li>
+                <li class="fragment">
+                  mittels der <code>var()</code>-Funktion
+                </li>
+              </ul>
+            </li>
+            <li class="fragment">
+              CP unterliegen der Kaskade
+              <ul>
+                <li class="fragment"><code>=></code> werden vererbt</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="highlight">Deklarierung</h2>
+          <blockquote style="margin-bottom: 1em">
+            innerhalb von <code>{}</code>
+          </blockquote>
+          <pre
+            style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+          ><code class="css" style="height:100%" data-trim class="hljs">
+              :root {
+                --color-primary: #093148;
+              }
+            </code></pre>
+        </section>
+
+        <section>
+          <section data-transition="fade">
+            <h2 class="highlight">Verwendung</h2>
+            <blockquote style="margin-bottom: 1em">
+              mittels der <code>var()</code>-Funktion
+            </blockquote>
+            <pre
+              style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+            ><code class="css" style="height:100%" data-trim class="hljs">
+                      h1 {
+                        color: var(--color-primary);
+                      }
+                    </code></pre>
+          </section>
+
+          <section data-transition="fade">
+            <h2 class="highlight">Verwendung mit Fallback</h2>
+            <blockquote style="margin-bottom: 1em">
+              mittels der <code>var()</code>-Funktion
+            </blockquote>
+            <pre
+              style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+            ><code class="css" style="height:100%" data-trim class="hljs">
+                        h1 {
+                          color: var(--color-primary, blue);
+                        }
+                      </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              <span class="highlight">Local Scope</span> vs.
+              <span class="highlight">Global Scope</span>
+            </h2>
+            <blockquote class="fragment" style="margin-bottom: 1em">
+              CP unterliegen der Kaskade
+            </blockquote>
+            <div style="display: flex">
+              <div class="fragment" style="width: 50%;">
+                <div class="code-title">
+                  CSS
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs">
+                            :root {
+                              --link-color: blue;
+                            }
+      
+                            a {
+                              color: var(--link-color);
+                            }
+                          </code></pre>
+              </div>
+              <div class="fragment" style="width: 50%;">
+                <div class="code-title">
+                  HTML
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="html" style="height:100%" data-trim class="hljs">
+                      <!-- --link-color: blue -->
+                      <a href="#">Klick mich</a>
+                      
+                      <div class="component">
+                        <!-- --link-color: blue -->
+                        <a href="#">Klick mich</a>
+                      </div>
+                      </code></pre>
+              </div>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Global ist :root</li>
+                <li>:root ist html</li>
+                <li>Vererbt => verfügbar in allen Kindern</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              <span class="highlight">Local Scope</span> vs.
+              <span class="highlight">Global Scope</span>
+            </h2>
+            <blockquote style="margin-bottom: 1em">
+              CP unterliegen der Kaskade
+            </blockquote>
+            <div style="display: flex">
+              <div style="width: 50%;">
+                <div class="code-title">
+                  CSS
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs">
+                              :root {
+                                --link-color: blue;
+                              }
+      
+                              a {
+                                color: var(--link-color);
+                              }
+      
+                              .component {
+                                --link-color: red;
+                              }
+                            </code></pre>
+              </div>
+              <div class="fragment" style="width: 50%;">
+                <div class="code-title">
+                  HTML
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="html" style="height:100%" data-trim class="hljs">
+                        <!-- --link-color: blue -->
+                        <a href="#">Klick mich</a>
+                        
+                        <div class="component">
+                          <!-- --link-color: red -->
+                          <a href="#">Klick mich</a>
+                        </div>
+                        </code></pre>
+              </div>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Wie normale Properties auch überschreibbar</li>
+                <li>Fortan überschrieben in allen Kindern</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              <span class="highlight">Komponentenorientiere</span> Verwendung
+            </h2>
+            <div style="display: flex">
+              <div class="fragment" style="width: 50%;">
+                <div class="code-title">
+                  settings.css
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs">
+                    :root {
+                      --color-primary: #093148;
+                      --color-secondary: #FFE50A;
+                      --vertical-distance: 1rem;
+                      // …
+                    }
+                    </code></pre>
+              </div>
+              <div class="fragment" style="width: 50%;">
+                <div class="code-title">
+                  button.css
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs">
+                      .btn {
+                        background-color:
+                          var(--color-secondary);
+                        color:
+                          var(--color-primary);
+                      }
+                      </code></pre>
+              </div>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Eignen sich sehr gut zum Komponentenorientieren Arbeiten</li>
+                <li>Wer hat Erfahrung mit Design Systemen?</li>
+                <li>settings.css -> Listung aller Design Tokens</li>
+                <li>Komponenten können die Tokens konsumieren</li>
+              </ul>
+            </aside>
+          </section>
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              <span class="highlight">Komponentenorientiere</span> Verwendung
+            </h2>
+            <div style="display: flex">
+              <div style="width: 50%;">
+                <div class="code-title">
+                  settings.css
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs">
+                      :root {
+                        --color-primary: #093148;
+                        --color-secondary: #FFE50A;
+                        --vertical-distance: 1rem;
+                        // …
+                      }
+                      </code></pre>
+              </div>
+              <div style="width: 50%;">
+                <div class="code-title">
+                  button.css
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs">
+                  .btn {
+                    --btn-background:
+                      var(--color-secondary);
+                    --btn-color:
+                      var(--color-primary);
+
+                    background-color:
+                      var(--btn-background);
+                    color:
+                      var(--btn-color);
+                  }
+                  </code></pre>
+              </div>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Besser: Komponenten definieren lokale Variablen</li>
+                <li>Diese konsumieren die Design Tokens</li>
+                <li>Lokale Werte bleiben überschreibbar</li>
+              </ul>
+            </aside>
+          </section>
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              <span class="highlight">Komponentenorientiere</span> Verwendung
+            </h2>
+            <div style="display: flex">
+              <div style="width: 50%;">
+                <div class="code-title">
+                  settings.css
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs">
+                        :root {
+                          --color-primary: #093148;
+                          --color-secondary: #FFE50A;
+                          --vertical-distance: 1rem;
+                          // …
+                        }
+                        </code></pre>
+              </div>
+              <div style="width: 50%;">
+                <div class="code-title">
+                  button.css
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs">
+                    .btn {
+                      --btn-background:
+                        var(--color-secondary, #000);
+                      --btn-color:
+                        var(--color-primary, #FFF);
+  
+                      background-color:
+                        var(--btn-background);
+                      color:
+                        var(--btn-color);
+                    }
+                    </code></pre>
+              </div>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Auch mit Fallback möglich</li>
+                <li>Komponente wird dadurch 'transferierbar'</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom: .5em">
+            <span class="highlight">Tipp:</span> <code>logic fold</code>
+          </h2>
+          <div class="code-title">
+            button.css
+          </div>
+          <pre
+            style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+          ><code class="css" style="height:100%" data-trim class="hljs">
+                .btn {
+                  // all your custom properties
+                  --btn-background: var(--color-secondary, #000);
+                  --btn-color: var(--color-primary, #FFF);
+
+                  // ==============================
+
+                  // all actual style declarations
+                  background-color: var(--btn-background);
+                  color: var(--btn-color);
+                }
+                </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Mike Riethmuller</li>
+              <li>Dateien werden leicht scanbar</li>
+              <li>Oben schauen und direkt wissen welche Properties es gibt</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              Verwendung in <code class="highlight">calc()</code>
+            </h2>
+            <div style="display: flex">
+              <div style="width: 70%;">
+                <div class="code-title">
+                  CSS
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs" data-line-numbers>
+                  body {
+                    padding: 10px;
+                  }
+                  
+                  .header {
+                    position: fixed;
+                    height: 60px;
+                    left: 0;
+                    top: 0;
+                    background-color:
+                      rgba(237, 137, 55, .9);
+                  }
+                </code></pre>
+              </div>
+              <div class="fragment" style="width: 30%">
+                <div class="code-title">
+                  HTML
+                </div>
+                <iframe
+                  data-preload
+                  data-src="/examples/header-01.html"
+                  frameborder="0"
+                  style="height: calc(100% - 42px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto;"
+                ></iframe>
+              </div>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Anwendungsbeispiele</li>
+                <li>Komplexere 'algorithmische' Dinge</li>
+                <li>Möglich in calc</li>
+              </ul>
+            </aside>
+          </section>
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              Verwendung in <code class="highlight">calc()</code>
+            </h2>
+            <div style="display: flex">
+              <div style="width: 70%;">
+                <div class="code-title">
+                  CSS
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs" data-line-numbers="2,7">
+                    body {
+                      padding: 70px 10px 10px;
+                    }
+                    
+                    .header {
+                      position: fixed;
+                      height: 60px;
+                      left: 0;
+                      top: 0;
+                      background-color:
+                        rgba(237, 137, 55, .9);
+                    }
+                </code></pre>
+              </div>
+              <div style="width: 30%">
+                <div class="code-title">
+                  HTML
+                </div>
+                <iframe
+                  data-preload
+                  data-src="/examples/header-02.html"
+                  frameborder="0"
+                  style="height: calc(100% - 42px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto;"
+                ></iframe>
+              </div>
+            </div>
+          </section>
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              Verwendung in <code class="highlight">calc()</code>
+            </h2>
+            <div style="display: flex">
+              <div style="width: 70%;">
+                <div class="code-title">
+                  CSS
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs" data-line-numbers="2-3,8">
+                      body {
+                        padding:
+                          calc(10px + var(--header-height)) 10px 10px;
+                      }
+                      
+                      .header {
+                        position: fixed;
+                        height: var(--header-height);
+                        left: 0;
+                        top: 0;
+                        background-color:
+                          rgba(237, 137, 55, .9);
+                      }
+                  </code></pre>
+              </div>
+              <div style="width: 30%">
+                <div class="code-title">
+                  HTML
+                </div>
+                <iframe
+                  data-preload
+                  data-src="/examples/header-03.html"
+                  frameborder="0"
+                  style="height: calc(100% - 42px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto;"
+                ></iframe>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              Custom Properties und
+              <span class="highlight">Responsive Design</span>
+            </h2>
+            <div style="display: flex">
+              <div class="fragment" style="width: 50%;">
+                <div class="code-title">
+                  card.scss
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="scss" style="height:100%; overflow: hidden;" data-trim class="hljs">
+                      $card-font-size: 1.5rem;
+                      $card-font-size-sm: 1rem;
+      
+                      .card {
+                        font-size:
+                          $card-font-size-sm;
+      
+                        @media (min-width: 960px) {
+                          font-size: $card-font-size;
+                        }
+                      }
+                    </code></pre>
+              </div>
+              <div class="fragment" style="width: 50%; position: relative;">
+                <div class="code-title">
+                  card.css
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs">
+                        .card {
+                          --card-font-size: 1.5rem;
+                          --card-font-size-sm: 1rem;
+                          
+                          font-size:
+                            var(--card-font-size-sm);
+                        }
+
+                        @media (min-width: 960px) {
+                          .card {
+                            font-size:
+                              var(--card-font-size);
+                          }
+                        }
+                      </code></pre>
+                <div
+                  class="fragment"
+                  style="position: absolute; top: 50%;left:50%;transform: translate(-50%,-50%) translateY(40px);font-size:6em"
+                >
+                  🚫
+                </div>
+              </div>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Super hilfreich für RSD</li>
+                <li>Beispiel aus Präprozessor</li>
+                <li>Naive Übersetzung in CPs</li>
+              </ul>
+            </aside>
+          </section>
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              Custom Properties und
+              <span class="highlight">Responsive Design</span>
+            </h2>
+            <div style="display: flex">
+              <div style="width: 50%;">
+                <div class="code-title">
+                  card.scss
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="scss" style="height:100%; overflow: hidden;" data-trim class="hljs">
+                        $card-font-size: 1.5rem;
+                        $card-font-size-sm: 1rem;
+        
+                        .card {
+                          font-size:
+                            $card-font-size-sm;
+        
+                          @media (min-width: 960px) {
+                            font-size: $card-font-size;
+                          }
+                        }
+                      </code></pre>
+              </div>
+              <div style="width: 50%; position: relative;">
+                <div class="code-title">
+                  card.css
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs">
+                          .card {
+                            --card-font-size: 1rem;
+
+                            font-size:
+                              var(--card-font-size);
+                          }
+
+                          @media (min-width: 960px) {
+                            --card-font-size: 1.5rem;
+                          }
+                        </code></pre>
+              </div>
+            </div>
+            <aside class="notes">
+                <ul>
+                  <li>Stattdessen die CP überschrieben</li>
+                  <li>Entspricht mehr dem mobile first Ansatz</li>
+                  <li>Besser lesbar</li>
+                </ul>
+              </aside>
+          </section>
+        </section>
+
+        <section>
+          <h2 class="highlight">Regel:</h2>
+          <blockquote>
+            Change the <code class="highlight">value</code>, not the
+            <code class="highlight">variable</code>!
+          </blockquote>
+        </section>
+
+        <section>
+          <section data-transition="fade">
+            <h2 class="highlight">Regel:</h2>
+            <blockquote>
+              declare <code>-></code> adjust <code>-></code> use once
+            </blockquote>
+          </section>
+          <section data-transition="fade">
+            <h2 class="highlight">Regel:</h2>
+            <blockquote>
+              <span class="highlight">d</span>eclare <code>-></code>
+              <span class="highlight">a</span>djust <code>-></code>
+              <span class="highlight">u</span>se once
+            </blockquote>
+          </section>
+        </section>
+
+        <section data-transition="convex">
+          <h2>
+            😎<br />
+            <span class="highlight">Coooole</span> Beispiele
+          </h2>
+        </section>
+
+        <section>
+          <section data-transition="fade">
+            <h2>Token Lists</h2>
+            <div style="display: flex">
+              <div style="width: 70%;">
+                <div class="code-title">
+                  CSS
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs" data-line-numbers>
+                      .square {
+                        width: 120px;
+                        height: 120px;
+                        background-color: darkorange;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transform: rotate(45deg);
+                        transition: transform .2s ease-out;
+                      }
+                      .square:hover {
+                        transform: rotate(45deg) scale(2);
+                      }
+                    </code></pre>
+              </div>
+              <div style="width: 30%">
+                <div class="code-title">
+                  HTML
+                </div>
+                <iframe
+                  data-preload
+                  data-src="/examples/token-lists-01.html"
+                  frameborder="0"
+                  style="height: calc(100% - 42px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto;"
+                ></iframe>
+              </div>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Kurz Setup erklären</li>
+                <li>Auf nächster Folie sind die wichtigen Stellen gehighlightet</li>
+              </ul>
+            </aside>
+          </section>
+          <section data-transition="fade">
+            <h2>Token Lists</h2>
+            <div style="display: flex">
+              <div style="width: 70%;">
+                <div class="code-title">
+                  CSS
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                ><code class="css" style="height:100%" data-trim class="hljs" data-line-numbers="8,12">
+                      .square {
+                        width: 120px;
+                        height: 120px;
+                        background-color: darkorange;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transform: rotate(45deg);
+                        transition: transform .2s ease-out;
+                      }
+                      .square:hover {
+                        transform: rotate(45deg) scale(2);
+                      }
+                    </code></pre>
+              </div>
+              <div style="width: 30%">
+                <div class="code-title">
+                  HTML
+                </div>
+                <iframe
+                  data-preload
+                  data-src="/examples/token-lists-01.html"
+                  frameborder="0"
+                  style="height: calc(100% - 42px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto;"
+                ></iframe>
+              </div>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Problematisch: transform muss an zwei Stellen gepflegt werden</li>
+              </ul>
+            </aside>
+          </section>
+          <section data-transition="fade">
+            <h2>Token Lists</h2>
+            <div style="display: flex">
+              <div style="width: 70%;">
+                <div class="code-title">
+                  CSS
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px);margin-bottom: 0;"
+                ><code class="css" style="height:100%;overflow: hidden" data-trim class="hljs" data-line-numbers="2,10,14">
+                        .square {
+                          --scale: 1;
+                          width: 120px;
+                          height: 120px;
+                          background-color: darkorange;
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                          transform:
+                            rotate(45deg) scale(var(--scale));
+                          transition: transform .2s ease-out;
+                        }
+                        .square:hover {
+                          --scale: 2;
+                        }
+                      </code></pre>
+              </div>
+              <div style="width: 30%">
+                <div class="code-title">
+                  HTML
+                </div>
+                <iframe
+                  data-preload
+                  data-src="/examples/token-lists-02.html"
+                  frameborder="0"
+                  style="height: calc(100% - 42px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto;"
+                ></iframe>
+              </div>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>--scale deklarieren</li>
+                <li>--scale einfach überschrieben</li>
+                <li>Rest des transforms bleibt unberührt</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom: .5em">
+            <span class="highlight">Custom Properties</span><br />
+            als Teil von shorthands
+          </h2>
+          <pre
+            class="fragment"
+            style="display:flex; flex-direction: column; height: calc(100% - 43px);margin-bottom: 0;"
+          ><code class="css" style="height:100%;overflow: hidden" data-trim class="hljs">
+            .card {
+              /* offset-x | offset-y | blur-radius | color */
+              box-shadow: 10px 5px 5px rgba(0, 0, 0, .5);
+            }
+          </code></pre>
+          <pre
+            class="fragment"
+            style="display:flex; flex-direction: column; height: calc(100% - 43px);margin-bottom: 0;"
+          ><code class="css" style="height:100%;overflow: hidden" data-trim class="hljs">
+            .card {
+              --offset-x: 10px;
+              --offset-y: 5px;
+              --blur: 5px;
+              --color: rgba(0, 0, 0, .5);
+
+              box-shadow: var(--offset-x) var(--offset-y) var(--blur) var(--color);
+            }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2><span class="highlight">Custom Properties</span> + JS = 💪</h2>
+          <div style="display: flex">
+            <div style="width: 70%;height: calc(100% - 43px)">
+              <div class="code-title">
+                CSS
+              </div>
+              <pre
+                style="display:flex; flex-direction: column; "
+              ><code class="css" style="height:100%" data-trim class="hljs">
+                body {
+                  --bg-color: darkorange;
+
+                  background-color: var(--bg-color);
+                }
+              </code></pre>
+              <div class="code-title">
+                JavaScript
+              </div>
+              <pre
+                style="display:flex; flex-direction: column;margin-bottom: 0"
+              ><code class="js" style="height:100%;overflow: hidden;" data-trim class="hljs">
+                  const styles =
+                    getComputedStyle(document.body);
+                  
+                  const backgroundColor =
+                  styles.getPropertyValue('--bg-color');
+
+                  console.log(backgroundColor); // lightsalmon
+                </code></pre>
+            </div>
+            <div style="width: 30%">
+              <div class="code-title">
+                HTML
+              </div>
+              <iframe
+                data-preload
+                data-src="/examples/js-01.html"
+                frameborder="0"
+                style="height: calc(100% - 42px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto 0;"
+              ></iframe>
+            </div>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>Wahre Power mit JS</li>
+              <li>CP auslesbar</li>
+              <li>Auch nützlich im Werte aus dem CSS JS verfügbar zu machen</li>
+              <li>Breakpoints?</li>
+              <li>Flixslider</li>
+              <li>DevTools!!</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2><span class="highlight">Custom Properties</span> + JS = 💪</h2>
+          <div style="display: flex">
+            <div style="width: 70%;height: calc(100% - 43px)">
+              <div class="code-title">
+                CSS
+              </div>
+              <pre
+                style="display:flex; flex-direction: column; "
+              ><code class="css" style="height:100%" data-trim class="hljs">
+                  body {
+                    --bg-color: darkorange;
+  
+                    background-color: var(--bg-color);
+                  }
+                </code></pre>
+              <div class="code-title">
+                JavaScript
+              </div>
+              <pre
+                style="display:flex; flex-direction: column;margin-bottom: 0"
+              ><code class="js" style="height:100%;overflow: hidden;" data-trim class="hljs">
+                  const button =
+                    document.querySelector('#button');
+                  
+                  button.addEventListener('click', () => {
+                    document.body.style.setProperty(
+                      '--bg-color',
+                      'pink'
+                    );
+                  });
+              </code></pre>
+            </div>
+            <div style="width: 30%">
+              <div class="code-title">
+                HTML
+              </div>
+              <iframe
+                data-preload
+                data-src="/examples/js-02.html"
+                frameborder="0"
+                style="height: calc(100% - 42px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto 0;"
+              ></iframe>
+            </div>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>Besser: Properties per JS setzen</li>
+              <li>Auf Unterschied in API hinweisen</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2><span class="highlight">Custom Properties</span> + JS = 💪</h2>
+          <div style="display: flex">
+            <div style="width: 70%;height: calc(100% - 43px)">
+              <div class="code-title">
+                HTML
+              </div>
+              <pre
+                style="display:flex; flex-direction: column; "
+              ><code class="html" style="height:100%" data-trim class="hljs">
+                  <input type="color" id="picker">
+                  </code></pre>
+              <div class="code-title">
+                JavaScript
+              </div>
+              <pre
+                style="display:flex; flex-direction: column;margin-bottom: 0"
+              ><code class="js" style="height:100%;overflow: hidden;" data-trim class="hljs">
+                  const input =
+                    document.querySelector('#picker');
+                  
+                    input.addEventListener('change', (e) => {
+                    document.body.style.setProperty(
+                      '--bg-color',
+                      e.target.value
+                    );
+                  });
+                </code></pre>
+            </div>
+            <div style="width: 30%">
+              <div class="code-title">
+                HTML
+              </div>
+              <iframe
+                data-preload
+                data-src="/examples/js-03.html"
+                frameborder="0"
+                style="height: calc(100% - 42px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto 0;"
+              ></iframe>
+            </div>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>Noch geiler: color picker</li>
+              <li>Sehr nützlich für theming</li>
+              <li>Website Konfigurator von sgalinski</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2><span class="highlight">Custom Properties</span> + JS = 💪</h2>
+          <div style="display: flex">
+            <div style="width: 70%;height: calc(100% - 43px)">
+              <div class="code-title">
+                CSS
+              </div>
+              <pre
+                style="display:flex; flex-direction: column; "
+              ><code class="css" style="height:100%" data-trim class="hljs">
+                :root {
+                  --right: 0px;
+                }
+                .box {
+                  right: calc(0px + var(--right));
+                }
+              </code></pre>
+              <div class="code-title">
+                JavaScript
+              </div>
+              <pre
+                style="display:flex; flex-direction: column;margin-bottom: 0"
+              ><code class="js" style="height:100%;overflow: hidden;" data-trim class="hljs">
+                  function mousemove(e) {
+                    if (dragging) {
+                      document.body.style.setProperty(
+                        '--right',
+                        `${start - e.clientX}px`
+                      );
+                    }
+                  }
+              </code></pre>
+            </div>
+            <div style="width: 30%">
+              <div class="code-title">
+                HTML
+              </div>
+              <iframe
+                data-preload
+                data-src="/examples/js-04.html"
+                frameborder="0"
+                style="height: calc(100% - 42px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto 0;"
+              ></iframe>
+            </div>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>Kreativere Anwendungen</li>
+              <li>Design System Vorschau Dings</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              Custom Properties als <span class="highlight">API</span>
+            </h2>
+            <div style="display: flex">
+              <div style="width: 50%;padding-bottom: 13px;">
+                <div class="code-title">
+                  button.css
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px);margin-bottom: 0"
+                ><code class="css" style="height:100%; overflow: hidden;" data-trim class="hljs">
+                      .btn {
+                        --bg-color: indigo;
+                        --color: white;
+                        --border-radius: 10px;
+      
+                        background: var(--bg-color);
+                        color: var(--color);
+                        border-radius:
+                          var(--border-radius);
+                      }
+                    </code></pre>
+              </div>
+              <div style="width: 50%; position: relative;">
+                <div class="code-title">
+                  card.html
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; "
+                ><code class="html" style="height:100%" data-trim class="hljs">
+                      <button class="btn">
+                        Click mich
+                      </button>
+                    </code></pre>
+                <div class="code-title">
+                  Vorschau
+                </div>
+                <iframe
+                  data-preload
+                  data-src="/examples/api-01.html"
+                  frameborder="0"
+                  style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto 0;"
+                ></iframe>
+              </div>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>Komponenten können eigene API definieren</li>
+                <li>Auch in style-Attribut möglich</li>
+                <li>DevTools!!</li>
+              </ul>
+            </aside>
+          </section>
+          <section data-transition="fade">
+            <h2 style="margin-bottom: .5em">
+              Custom Properties als <span class="highlight">API</span>
+            </h2>
+            <div style="display: flex">
+              <div style="width: 50%;padding-bottom: 13px;">
+                <div class="code-title">
+                  button.css
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; height: calc(100% - 43px);margin-bottom: 0"
+                ><code class="css" style="height:100%; overflow: hidden;" data-trim class="hljs">
+                        .btn {
+                          --bg-color: indigo;
+                          --color: white;
+                          --border-radius: 10px;
+        
+                          background: var(--bg-color);
+                          color: var(--color);
+                          border-radius:
+                            var(--border-radius);
+                        }
+                      </code></pre>
+              </div>
+              <div style="width: 50%; position: relative;">
+                <div class="code-title">
+                  card.html
+                </div>
+                <pre
+                  style="display:flex; flex-direction: column; "
+                ><code class="html" style="height:100%" data-trim class="hljs">
+                        <button class="btn" style="--bg-color: red">
+                          Click mich
+                        </button>
+                      </code></pre>
+                <div class="code-title">
+                  Vorschau
+                </div>
+                <iframe
+                  data-preload
+                  data-src="/examples/api-02.html"
+                  frameborder="0"
+                  style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto 0;"
+                ></iframe>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom: .5em">
+            Custom Properties als <span class="highlight">API</span>
+          </h2>
+          <div style="display: flex">
+            <div style="width: 70%;">
+              <div class="code-title">
+                CSS
+              </div>
+              <pre
+                style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+              ><code class="css" style="height:100%" data-trim class="hljs">
+                  .hero {
+                    --color: white;
+                    --bg-color: indigo;
+
+                    background-color: var(--bg-color);
+                    color: var(--color);
+                  }
+              </code></pre>
+            </div>
+            <div style="width: 30%">
+              <div class="code-title">
+                HTML
+              </div>
+              <iframe
+                data-preload
+                data-src="/examples/api-03.html"
+                frameborder="0"
+                style="height: calc(100% - 42px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; box-sizing: border-box; width: 100%; margin: 20px auto;"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Browser Support?</h2>
+          <img class="fragment" src="/browser-support.png" alt="" />
+        </section>
+
+        <section>
+          <h2>Browser Support?</h2>
+          <img
+            style="border: 0;background: transparent"
+            src="/polyfill.png"
+            alt=""
+          />
+        </section>
+
+        <section data-transition="convex">
+          <h2><span class="highlight">WTF</span>s</h2>
+          <img src="/facepalm.gif" alt="" />
+        </section>
+
+        <section>
+          <section data-transition="fade">
+            <pre
+              style="display:flex; flex-direction: column; height: calc(100% - 43px);"
+            ><code class="css" style="height:100%" data-trim class="hljs">
+                :root {
+                  --foo:;
+                }
+            </code></pre>
+          </section>
+          <section data-transition="fade">
+            <pre
+              style="display:flex; flex-direction: column; height: calc(100% - 43px);"
+            ><code class="css" style="height:100%" data-trim class="hljs">
+                :root {
+                  --foo:; // invalid
+                }
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section data-transition="fade">
+            <pre
+              style="display:flex; flex-direction: column; height: calc(100% - 43px);"
+            ><code class="css" style="height:100%" data-trim class="hljs">
+                  :root {
+                    --foo: ;
+                  }
+              </code></pre>
+          </section>
+          <section data-transition="fade">
+            <pre
+              style="display:flex; flex-direction: column; height: calc(100% - 43px);"
+            ><code class="css" style="height:100%" data-trim class="hljs">
+                  :root {
+                    --foo: ; // --foo ist empty space
+                  }
+              </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <pre
+            style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+          ><code class="css" style="height:100%" data-trim class="hljs">
+                  --foo !== --FOO
+              </code></pre>
+        </section>
+
+        <section>
+          <section data-transition="fade">
+              <div style="display: flex">
+                <div style="width: 50%;">
+                  <pre
+                    style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                  ><code class="css" style="height:100%; overflow: hidden" data-trim class="hljs">
+                          :root {
+                            --color: blue;
+                          }
+                          
+                          div {
+                            --color: yellow;
+                          }
+                          
+                          #someId {
+                            --color: darkred;
+                          }
+                          
+                          * {
+                            color: var(--color);
+                          }
+                      </code></pre>
+                </div>
+                <div style="width: 50%;">
+                  <pre
+                    style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                  ><code class="html" style="height:100%" data-trim class="hljs">
+                      <p>ONE</p>
+    
+                      <div>TWO</div>
+    
+                      <div id="someId">
+                        THREE
+                      
+                        <p>FOUR</p>
+                      
+                      </div>
+                    </code></pre>
+                </div>
+              </div>
+            </section>
+
+            <section data-transition="fade">
+                <div style="display: flex">
+                  <div style="width: 50%;">
+                    <pre
+                      style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                    ><code class="css" style="height:100%; overflow: hidden" data-trim class="hljs">
+                            :root {
+                              --color: blue;
+                            }
+                            
+                            div {
+                              --color: yellow;
+                            }
+                            
+                            #someId {
+                              --color: darkred;
+                            }
+                            
+                            * {
+                              color: var(--color);
+                            }
+                        </code></pre>
+                  </div>
+                  <div style="width: 50%;">
+                    <pre
+                      style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                    ><code class="html" style="height:100%" data-trim class="hljs">
+                        <p>ONE</p> <!-- blue -->
+      
+                        <div>TWO</div>
+      
+                        <div id="someId">
+                          THREE
+                        
+                          <p>FOUR</p>
+                        
+                        </div>
+                      </code></pre>
+                  </div>
+                </div>
+              </section>
+
+              <section data-transition="fade">
+                  <div style="display: flex">
+                    <div style="width: 50%;">
+                      <pre
+                        style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                      ><code class="css" style="height:100%; overflow: hidden" data-trim class="hljs">
+                              :root {
+                                --color: blue;
+                              }
+                              
+                              div {
+                                --color: yellow;
+                              }
+                              
+                              #someId {
+                                --color: darkred;
+                              }
+                              
+                              * {
+                                color: var(--color);
+                              }
+                          </code></pre>
+                    </div>
+                    <div style="width: 50%;">
+                      <pre
+                        style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                      ><code class="html" style="height:100%" data-trim class="hljs">
+                          <p>ONE</p> <!-- blue -->
+        
+                          <div>TWO</div> <!-- yellow -->
+        
+                          <div id="someId">
+                            THREE
+                          
+                            <p>FOUR</p>
+                          
+                          </div>
+                        </code></pre>
+                    </div>
+                  </div>
+                </section>
+
+                <section data-transition="fade">
+                    <div style="display: flex">
+                      <div style="width: 50%;">
+                        <pre
+                          style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                        ><code class="css" style="height:100%; overflow: hidden" data-trim class="hljs">
+                                :root {
+                                  --color: blue;
+                                }
+                                
+                                div {
+                                  --color: yellow;
+                                }
+                                
+                                #someId {
+                                  --color: darkred;
+                                }
+                                
+                                * {
+                                  color: var(--color);
+                                }
+                            </code></pre>
+                      </div>
+                      <div style="width: 50%;">
+                        <pre
+                          style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                        ><code class="html" style="height:100%" data-trim class="hljs">
+                            <p>ONE</p> <!-- blue -->
+          
+                            <div>TWO</div> <!-- yellow -->
+          
+                            <div id="someId"> 
+                              THREE <!-- darkred -->
+                            
+                              <p>FOUR</p>
+                            
+                            </div>
+                          </code></pre>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section data-transition="fade">
+                      <div style="display: flex">
+                        <div style="width: 50%;">
+                          <pre
+                            style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                          ><code class="css" style="height:100%; overflow: hidden" data-trim class="hljs">
+                                  :root {
+                                    --color: blue;
+                                  }
+                                  
+                                  div {
+                                    --color: yellow;
+                                  }
+                                  
+                                  #someId {
+                                    --color: darkred;
+                                  }
+                                  
+                                  * {
+                                    color: var(--color);
+                                  }
+                              </code></pre>
+                        </div>
+                        <div style="width: 50%;">
+                          <pre
+                            style="display:flex; flex-direction: column; height: calc(100% - 43px)"
+                          ><code class="html" style="height:100%" data-trim class="hljs">
+                              <p>ONE</p> <!-- blue -->
+            
+                              <div>TWO</div> <!-- yellow -->
+            
+                              <div id="someId"> 
+                                THREE <!-- darkred -->
+                              
+                                <p>FOUR</p> <!-- darkred -->
+                              
+                              </div>
+                            </code></pre>
+                        </div>
+                      </div>
+                    </section>              
+        </section>
+
+        <section>
+          <h2>Danke</h2>
+          <h2>😌🎉</h2>
+        </section>
+
+        <section data-transition="convex">
+            <div style="display: grid; grid-template-columns: 1fr 3fr">
+              <div style="margin-top: -1em">
+                <img
+                  src="https://secure.gravatar.com/avatar/5bdfcb0dc46af8e85af45dca5d20d324?s=600"
+                  style="border-radius: 50%; width: 300px; height: 300px; display: block"
+                  alt=""
+                />
+                <p>👋</p>
+                <p
+                  style="display: flex; font-size: .7em; justify-content: center; padding-right: 1em"
+                >
+                  <svg
+                    style="width: 1.5em; color: hsl(202, 93%, 58%)"
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="Logo_FIXED"
+                    data-name="Logo — FIXED"
+                    viewBox="0 0 400 400"
+                  >
+                    <defs>
+                      <style>
+                        .cls-1 {
+                          fill: none;
+                        }
+                        .cls-2 {
+                          fill: currentColor;
+                        }
+                      </style>
+                    </defs>
+                    <title>Twitter_Logo_Blue</title>
+                    <rect class="cls-1" width="100" height="100" />
+                    <path
+                      class="cls-2"
+                      d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23"
+                    />
+                  </svg>
+                  @pnodev<br />
+                </p>
+                <p style="font-size: .7em">
+                  pno.dev
+                </p>
+              </div>
+              <div style="height: 200px">
+                <h2 class="highlight">Slides:</h2>
+                <a href="#" style="display: block; font-size: 2rem">https://www.pno.dev/slides/tugmd-09-2019</a>
+              </div>
+            </div>
+            <aside class="notes">
+              Auf Website und Twitter hinweisen
+            </aside>
+          </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/notes/notes.js", async: true },
+          { src: "plugin/highlight/highlight.js", async: true }
+        ],
+        hash: true,
+        fragments: true,
+        fragmentInURL: true,
+        hideInactiveCursor: true,
+        showNotes: false
+      });
+    </script>
+  </body>
+</html>

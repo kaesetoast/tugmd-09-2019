@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+  :root {
+    --header-height: 60px;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: white;
+    padding: calc(10px + var(--header-height)) 10px 10px;
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: var(--header-height);
+    width: 100%;
+    background-color: rgba(237, 137, 55, .9);
+  }
+  </style>
+  <div class="header">
+  </div>
+  <h1>Welcome</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit provident veniam accusantium earum, labore autem hic consequuntur. Culpa obcaecati consequuntur quidem doloribus fugiat voluptas, quas dolore eveniet, nam quia ipsa!</p>
+</body>
+</html>
