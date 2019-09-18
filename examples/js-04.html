@@ -54,9 +54,11 @@
   const handle = document.querySelector('.handle');
   let dragging = false;
   let start = 0;
+  let currentOffset = 0;
   handle.addEventListener('mousedown', (e) => {
     dragging = true;
     start = e.clientX;
+    currentOffset = parseInt(getComputedStyle(document.body).getPropertyValue('--right').replace('px', ''));
     setTimeout(() => {
       window.addEventListener('mousemove', mousemove);
     }, 100);
@@ -67,7 +69,7 @@
   });
   function mousemove(e) {
     if (dragging) {
-      document.body.style.setProperty('--right', `${start - e.clientX}px`);
+      document.body.style.setProperty('--right', `${start - e.clientX + currentOffset}px`);
     }
   }
   </script>

@@ -1264,12 +1264,12 @@
               </div>
               <pre
                 style="display:flex; flex-direction: column;margin-bottom: 0"
-              ><code class="js" style="height:100%;overflow: hidden;" data-trim class="hljs">
+              ><code class="js" style="height:100%;" data-trim class="hljs">
                   function mousemove(e) {
                     if (dragging) {
                       document.body.style.setProperty(
                         '--right',
-                        `${start - e.clientX}px`
+                        `${start - e.clientX + currentOffset}px`
                       );
                     }
                   }
@@ -1712,7 +1712,7 @@
                             </code></pre>
                         </div>
                       </div>
-                    </section>              
+                    </section>
         </section>
 
         <section>
@@ -1764,7 +1764,7 @@
               </div>
               <div style="height: 200px">
                 <h2 class="highlight">Slides:</h2>
-                <a href="#" style="display: block; font-size: 2rem">https://www.pno.dev/slides/tugmd-09-2019</a>
+                <a href="https://www.pno.dev/slides/tugmd-09-2019" style="display: block; font-size: 2rem">https://www.pno.dev/slides/tugmd-09-2019</a>
               </div>
             </div>
             <aside class="notes">
